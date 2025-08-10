@@ -1,78 +1,44 @@
-<p align="center">
-  <img src="docs/banner2.png" alt="Eremos Banner" width="100%"/>
-</p>
+# Eremos
 
-<h1 align="center">🗿 Eremos</h1>
-<p align="center">
-  <em>Autonomous swarm agents for early on-chain signal detection — built for the Solana ecosystem</em>
-</p>
+![Eremos](docs/banner2.png)
 
-<p align="center">
-  <a href="https://github.com/EremosCore/Eremos/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/EremosCore/Eremos" alt="License"/>
-  </a>
-  <a href="https://github.com/EremosCore/Eremos/stargazers">
-    <img src="https://img.shields.io/github/stars/EremosCore/Eremos?style=social" alt="Stars"/>
-  </a>
-  <a href="https://github.com/EremosCore/Eremos/network">
-    <img src="https://img.shields.io/github/forks/EremosCore/Eremos?style=social" alt="Forks"/>
-  </a>
-  <a href="https://github.com/EremosCore/Eremos/releases">
-    <img src="https://img.shields.io/github/v/release/EremosCore/Eremos" alt="Release"/>
-  </a>
-  <a href="https://github.com/EremosCore/Eremos/issues">
-    <img src="https://img.shields.io/github/issues/EremosCore/Eremos" alt="Issues"/>
-  </a>
-</p>
+**Autonomous swarm agents for early on-chain signal detection**
 
----
-
-## 🌌 Overview
-
-Eremos is a **lightweight, modular framework** for deploying autonomous agents that monitor **Solana blockchain activity** — from wallet funding flows to contract deploy patterns.
-
-These agents:
-- 🔍 Detect **early signals** before they're obvious
-- 🧩 Are **modular** & easily extendable
-- 🌐 Integrate seamlessly into dev & analyst workflows
-
-Built as a **public good** — fully open-source, community-friendly, and designed to enhance transparency.
+Eremos is a lightweight framework for deploying modular agents that monitor blockchain activity - tracking wallet clusters, mint patterns, and contract anomalies.
+Designed for devs who want low-noise, early signals embedded into their workflows.
 
 ---
 
 <p align="center">
-  <img src="docs/therontphd2.png" alt="Agent Theron" width="150"/><br/>
-  <em>Theron — Agent (000)</em>
+  <img src="docs/therontphd2.png" alt="Agent Theron" width="155"/><br/>
+  <em>Theron - Agent (000)</em>
 </p>
 
-> **Meet Theron — Agent-000**  
-> Passive. Pattern-sensitive. Modular and extendable by design.
+**Meet Theron - Agent-000**  
+*The first deployed agent in the swarm. Passive. Pattern-sensitive.  
+Modular and extendable by design.*
+
+
+**Agent-001 Coming Soon** [Teaser](https://x.com/EremosCore/status/1949154939923833239)
 
 ---
 
-## 📑 Table of Contents
-- [✨ Features](#-features)
-- [📡 Example Signal](#-example-signal)
-- [📊 Signal Confidence](#-signal-confidence)
-- [🛠 Tech Stack](#-tech-stack)
-- [🚀 Quickstart](#-quickstart)
-- [📂 Key Folders](#-key-folders)
-- [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
-- [🔗 Links](#-links)
+## Features
+
+- **Modular Agents** - Scoped logic for detecting wallet activity, contract spawns, and anomalies  
+- **Signal Emission** - Structured signals for logging, alerting, or downstream use  
+- **Swarm Design** - Each agent operates independently with shared utilities  
+- **Extensible Core** - Plug in watchers, inference layers, or custom triggers  
+- **Minimal Output** - Log only what matters
+- **Launch Wallet Detection** - Agents can trace freshly funded wallets (e.g. from CEXs), track their contract interactions, and flag high-confidence deploys in real time
+- **Ghost Watcher** - Monitors long-dormant wallets that suddenly become active again. Useful for tracing old dev wallets or rug setups.
+
 
 ---
 
-## ✨ Features
-✅ **Modular Agents** — Scoped logic for detecting wallet activity, contract spawns, and anomalies  
-✅ **Signal Emission** — Structured, low-noise outputs for logging, alerting, or downstream processing  
-✅ **Swarm Design** — Agents run independently but share utilities  
-✅ **Launch Wallet Detection** — Trace freshly funded wallets, monitor contract interactions, and flag high-confidence deploys in real-time  
-✅ **Ghost Watcher** — Detects dormant wallets that suddenly reactivate  
+## Example Signal
 
----
-
-## 📡 Example Signal
+An example signal emitted by an agent detecting a live token deployment:
 
 ```ts
 [agent-observer] → fresh funding detected from kraken (wallet: 6Yxk...P2M8) at 04:41:12Z
@@ -90,3 +56,76 @@ Built as a **public good** — fully open-source, community-friendly, and design
   source: "agent-observer",
   confidence: 0.91
 }
+```
+
+---
+
+## Signal Confidence
+
+Each emitted signal includes a `confidence` score (0-1) based on behavioral heuristics:
+- CEX-origin funding (e.g. Kraken, Coinbase)
+- Time between funding → deploy
+- Wallet linkage density (bundled activity)
+- Token metadata validation
+
+Confidence is computed via agent-side scoring and logged alongside the signal.
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js, Tailwind CSS
+- **Backend:** Node.js (TypeScript-based agent runner)
+- **Language:** TypeScript (typed logic across agents, utils, and infra)
+- **Chain Layer:** RPC watchers, mempool filters, native triggers
+
+---
+
+## Getting Started
+
+```bash
+git clone https://github.com/EremosCore/Eremos.git
+cd Eremos
+npm install
+```
+
+Set up your environment:
+
+```bash
+cp .env.example .env.local
+npm run dev
+```
+
+---
+
+## Key Folders
+
+- `/agents` - Agent templates + logic  
+- `/utils` - Shared signal/logging utilities  
+- `/types` - TypeScript interfaces + definitions  
+- `/scripts` - Bootstrap and dev scripts  
+- `/docs` - Swarm structure, architecture, & our artwork/official whitepaper
+
+---
+
+## Contributing
+
+We’re open to contributors.  
+If you are experienced in TypeScript and like agent-based systems, check `example.ts` and build your own observer.
+If you're a designer, artist, or just have ideas that fit the mythos - send us a DM on Twitter. [@EremosCore](https://x.com/EremosCore)
+
+---
+
+## License
+
+MIT © Eremos LLC
+
+---
+
+## Links
+
+- **Twitter/X:** [@EremosCore](https://x.com/EremosCore)
+- **Website:** [Eremos.io](https://www.eremos.io/)
+- **Whitepaper:** [v1.0 PDF](docs/whitepaper.pdf)
+
+_Maintained by the Eremos Core team 💛._
